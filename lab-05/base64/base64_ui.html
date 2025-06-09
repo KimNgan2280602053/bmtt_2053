@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Base64 Tool - Màu Hồng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fff0f6;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .tool-container {
+            max-width: 650px;
+            margin: 60px auto;
+        }
+        .card-header {
+            background-color: #fc94af;
+            color: white;
+        }
+        .btn-encode {
+            background-color: #f06292;
+            color: white;
+        }
+        .btn-encode:hover {
+            background-color: #ec407a;
+        }
+        .btn-decode {
+            background-color: #f8bbd0;
+            color: #6b004c;
+        }
+        .btn-decode:hover {
+            background-color: #f48fb1;
+        }
+        pre {
+            background-color: #ffe4ec;
+        }
+    </style>
+</head>
+<body>
+    <div class="container tool-container">
+        <div class="card shadow">
+            <div class="card-header text-center">
+                <h4 class="mb-0">🌸 Công Cụ Mã Hóa / Giải Mã Base64</h4>
+            </div>
+            <div class="card-body">
+                <form id="base64Form">
+                    <div class="mb-3">
+                        <label for="inputText" class="form-label">📥 Nhập nội dung:</label>
+                        <textarea class="form-control" id="inputText" rows="4" placeholder="Nhập văn bản cần xử lý..."></textarea>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-encode w-50" onclick="encode()">🔒 Mã hóa</button>
+                        <button type="button" class="btn btn-decode w-50" onclick="decode()">🔓 Giải mã</button>
+                    </div>
+                    <div class="mt-4">
+                        <label class="form-label">🎀 Kết quả:</label>
+                        <pre id="result" class="p-3 border rounded text-break"></pre>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function encode() {
+            const text = document.getElementById("inputText").value;
+            try {
+                document.getElementById("result").textContent = btoa(text);
+            } catch (e) {
+                document.getElementById("result").textContent = "❌ Lỗi: Không thể mã hóa chuỗi này.";
+            }
+        }
+
+        function decode() {
+            const text = document.getElementById("inputText").value;
+            try {
+                document.getElementById("result").textContent = atob(text);
+            } catch (e) {
+                document.getElementById("result").textContent = "❌ Lỗi: Chuỗi không hợp lệ để giải mã.";
+            }
+        }
+    </script>
+</body>
+</html>

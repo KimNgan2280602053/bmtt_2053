@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🖼️ Ẩn & Giải mã Thông điệp</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+  <div class="container">
+    <h2 class="mb-4">🖼️ Ứng dụng giấu và giải mã thông điệp</h2>
+
+    <!-- Form mã hóa -->
+    <form action="/encode" method="POST" enctype="multipart/form-data" class="mb-4">
+      <h4>🔐 Ẩn thông điệp</h4>
+      <div class="mb-3">
+        <input type="file" name="image" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <input type="text" name="message" class="form-control" placeholder="Nhập thông điệp cần ẩn..." required>
+      </div>
+      <button class="btn btn-primary">Ẩn vào ảnh</button>
+    </form>
+
+    <!-- Form giải mã -->
+    <form action="/decode" method="POST" enctype="multipart/form-data">
+      <h4>🔍 Giải mã từ ảnh</h4>
+      <div class="mb-3">
+        <input type="file" name="image" class="form-control" required>
+      </div>
+      <button class="btn btn-success">Giải mã</button>
+    </form>
+
+    {% if message %}
+    <div class="alert alert-info mt-4">
+      🔎 Kết quả giải mã: <strong>{{ message }}</strong>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
